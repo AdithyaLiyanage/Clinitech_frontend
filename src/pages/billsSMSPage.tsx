@@ -179,8 +179,12 @@ const SMSPage: React.FC<SMSPageProps> = () => {
       if (response.data.success) {
         const createdBill = response.data.data;
 
-        // Build an SMS template message
-        const smsTemplate = `Dear Patient, your bill (ID: ${createdBill._id}) has been generated with a total amount of Rs.${createdBill.finalAmount}.`;
+        // Capture the current date to include as the sent date in the SMS template
+        const sentDate = new Date();
+        const formattedSentDate = sentDate.toLocaleString();
+
+        // Build an SMS template message that includes the sent date
+        const smsTemplate = `Dear Patient, your bill (ID: ${createdBill._id}) has been generated with a total amount of Rs.${createdBill.finalAmount} on ${formattedSentDate}.`;
 
         // Create the SMS record
         await createSMSRecord(patientId, createdBill._id, smsTemplate);

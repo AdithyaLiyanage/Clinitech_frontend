@@ -61,4 +61,10 @@ export const createSMSRecord = async (
   return api.post("/api/bills/sms", { patientId, billId, message });
 };
 
+export const getSMSMessages = async (patientId: string) => {
+  const response = await api.get(`/api/bills/sms/${patientId}`);
+  return response.data; // expected format: { success: true, data: array of SMS messages }
+};
+
+
 export default api;
