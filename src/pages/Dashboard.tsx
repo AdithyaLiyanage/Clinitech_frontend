@@ -39,7 +39,6 @@ const demoTheme = createTheme({
   breakpoints: { values: { xs: 0, sm: 600, md: 600, lg: 1200, xl: 1536 } },
 });
 
-// Simple title component
 function CustomAppTitle() {
   return (
     <Stack direction="row" alignItems="center" spacing={2}>
@@ -95,7 +94,6 @@ function ToolbarActionsSearch({ onSearch }: { onSearch: (value: string) => void 
   );
 }
 
-// Update the type for Patient if needed
 interface Bill {
   isCheckedOut: boolean;
   createdAt: string;
@@ -145,7 +143,6 @@ export default function DashboardLayoutSlots() {
     if (router.pathname === "/patients") {
       try {
         const response = await getPatientById(id);
-        // Assuming the API returns a PatientData type.
         const data: PatientData = response.data.data;
         // Augment the API result with a default bill property.
         const patientWithBill: Patient = {
@@ -157,14 +154,12 @@ export default function DashboardLayoutSlots() {
             insuranceCoverage: 0,
           },
         };
-        // If your API actually returns bill information, adjust this accordingly.
         setPatientSearchResult(patientWithBill);
       } catch (error) {
         console.error("Patient not found", error);
         setPatientSearchResult(null);
       }
     }
-    // For the SMS tab, we use the patient ID for notification purposes.
   };
 
   return (
@@ -172,7 +167,10 @@ export default function DashboardLayoutSlots() {
       <DashboardLayout
         slots={{
           appTitle: CustomAppTitle,
-          toolbarActions: () => <ToolbarActionsSearch onSearch={handleSearch} />,
+          toolbarActions: () =>
+            router.pathname === "/patients" ? (
+              <ToolbarActionsSearch onSearch={handleSearch} />
+            ) : null,
         }}
       >
         <DemoPageContent
