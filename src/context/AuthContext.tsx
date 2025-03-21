@@ -59,15 +59,15 @@ import {
         );
   
         const data = response.data as { token: string; user: any };
-        const token = data.token;
-        const doctor = data.user;
+        const token = data.result.token;
+        const user = data.result.user;
   
         if (token) {
           localStorage.setItem("token", token);
-          localStorage.setItem("user", JSON.stringify(doctor));
+          localStorage.setItem("user", JSON.stringify(user));
           setToken(token);
-          setUser(doctor);
-          navigate("/home"); // Redirect to the home page
+          setUser(user);
+          navigate("/doctordashboard"); // Redirect to the home page
         }
       } catch (error) {
         console.error("Login error:", error);
@@ -95,15 +95,15 @@ import {
           }
         );
   
-        const data = response.data as { token: string; doctor: any };
+        const data = response.data as { token: string; user: any };
         const token = data.token;
-        const doctor = data.doctor;
+        const user = data.user;
   
         if (token) {
           localStorage.setItem("token", token);
-          localStorage.setItem("user", JSON.stringify(doctor));
+          localStorage.setItem("user", JSON.stringify(user));
           setToken(token);
-          setUser(doctor);
+          setUser(user);
           navigate("/doctordashboard"); // Redirect to the home page
         }
       } catch (error) {
