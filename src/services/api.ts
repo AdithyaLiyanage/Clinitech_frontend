@@ -8,12 +8,12 @@ const api = axios.create({
   headers: { "Content-Type": "application/json" },
 });
 
-// ✅ Fetch patient details
+// Fetch patient details
 export const getPatientById = async (patientId: string) => {
   return api.get(`/api/bills/patient/${patientId}`);
 };
 
-// ✅ Add a sub-bill to MainBill
+// Add a sub-bill to MainBill
 export const addSubBill = async (
   patientId: string, 
   dailyAmount: number,
@@ -23,8 +23,7 @@ export const addSubBill = async (
   return api.post("/api/bills/bill", { patientId, dailyAmount, hospitalServices, treatments });
 };
 
-// ✅ Checkout patient & update final amount (if insurance is provided)
-// services/api.ts
+// Checkout patient & update final amount (if insurance is provided)
 export const checkoutPatient = async (
   patientId: string,
   insuranceCoverage: string,
@@ -47,7 +46,7 @@ export const getHospitalServices = async () => {
   return response.data; // expected format: { success: true, data: array of services }
 };
 
-// ✅ Fetch treatments from the new collection
+// Fetch treatments from the new collection
 export const getTreatments = async () => {
   const response = await api.get('/api/bills/treatments');
   return response.data; // expected format: { success: true, data: array of treatments }
