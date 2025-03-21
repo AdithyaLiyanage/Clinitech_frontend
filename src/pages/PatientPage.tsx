@@ -341,7 +341,12 @@ const PatientPage: React.FC<PatientPageProps> = ({
                 <TextField
                   label="Insurance Coverage"
                   value={insuranceCoverage}
-                  onChange={(e) => setInsuranceCoverage(e.target.value)}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (/^\d*\.?\d*$/.test(value)) {
+                      setInsuranceCoverage(value);
+                    }
+                  }}
                   fullWidth
                   disabled={billDetails?.isCheckedOut ?? false}
                 />
