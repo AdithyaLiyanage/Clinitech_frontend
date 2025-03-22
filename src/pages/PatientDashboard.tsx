@@ -259,6 +259,7 @@ const PatientDashboard: React.FC = () => {
                     className="w-full p-2 border rounded-md"
                     required
                     min="0"
+                    step="0.01"
                   />
                 </div>
               ))}
