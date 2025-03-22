@@ -107,8 +107,8 @@ const PatientDashboard: React.FC = () => {
         );
 
         // Update the metrics list with the edited record
-        setHealthMetrics(metrics =>
-          metrics.map(metric =>
+        setHealthMetrics((metrics) =>
+          metrics.map((metric) =>
             metric._id === currentMetricId ? { ...response.data } : metric
           )
         );
@@ -167,11 +167,13 @@ const PatientDashboard: React.FC = () => {
       try {
         const token = localStorage.getItem("token");
         await axios.delete(`/api/patientsMedical/${id}`, {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
         });
 
         // Remove the deleted metric from state
-        setHealthMetrics(metrics => metrics.filter(metric => metric._id !== id));
+        setHealthMetrics((metrics) =>
+          metrics.filter((metric) => metric._id !== id)
+        );
 
         alert("Record deleted successfully");
       } catch (error) {
@@ -218,6 +220,15 @@ const PatientDashboard: React.FC = () => {
           <InfoCard label="Gender" value={patient?.gender} icon="⚧" />
           <InfoCard label="Patient Age" value={patient?.age} icon="🎂" />
           <InfoCard label="Blood Type" value={patient?.bloodType} icon="🩸" />
+          <div className="flex items-center justify-center">
+            <button
+              className="flex items-center gap-2 bg-blue-600 text-white p-3 rounded-lg shadow-lg hover:bg-blue-700"
+              onClick={handleAddNew}
+            >
+              <FaPlus size={15} />
+              <span>Add Medical Data</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -228,14 +239,6 @@ const PatientDashboard: React.FC = () => {
         <HealthCard title="Heart Rate" color="green" />
         <HealthCard title="Cholesterol" color="yellow" />
       </div>
-
-      {/* Floating Add Button */}
-      <button
-        className="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700"
-        onClick={handleAddNew}
-      >
-        <FaPlus size={24} />
-      </button>
 
       {/* Form Modal */}
       {showForm && (
@@ -255,6 +258,7 @@ const PatientDashboard: React.FC = () => {
                     onChange={handleInputChange}
                     className="w-full p-2 border rounded-md"
                     required
+                    min="0"
                   />
                 </div>
               ))}
@@ -288,7 +292,9 @@ const PatientDashboard: React.FC = () => {
                 <tr className="bg-gray-200">
                   <th className="border p-2">Date</th>
                   {Object.keys(formData).map((key) => (
-                    <th key={key} className="border p-2">{key}</th>
+                    <th key={key} className="border p-2">
+                      {key}
+                    </th>
                   ))}
                   <th className="border p-2">Actions</th>
                 </tr>
@@ -296,9 +302,13 @@ const PatientDashboard: React.FC = () => {
               <tbody>
                 {healthMetrics.map((metric) => (
                   <tr key={metric._id} className="border hover:bg-gray-50">
-                    <td className="border p-2">{new Date(metric.date).toLocaleDateString()}</td>
+                    <td className="border p-2">
+                      {new Date(metric.date).toLocaleDateString()}
+                    </td>
                     {Object.keys(formData).map((key) => (
-                      <td key={key} className="border p-2">{metric[key]}</td>
+                      <td key={key} className="border p-2">
+                        {metric[key]}
+                      </td>
                     ))}
                     <td className="border p-2">
                       <div className="flex space-x-2 justify-center">

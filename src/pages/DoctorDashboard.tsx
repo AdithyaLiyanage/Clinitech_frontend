@@ -143,7 +143,7 @@ const DoctorDashboard: React.FC = () => {
                       </td>
                       <td className="py-3 px-4 text-right">
                         <button
-                          className="bg-purple-600 text-white py-2 px-3 rounded-md hover:bg-purple-700 flex items-center gap-1"
+                          className="bg-purple-600 text-white py-2 px-3 rounded-md hover:bg-purple-700 flex items-center gap-1 ml-auto"
                           onClick={() => navigate(`/patients/${patient._id}`)}
                         >
                           <FaFilePen className="text-sm" /> View Dashboard
