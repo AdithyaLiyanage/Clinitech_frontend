@@ -233,11 +233,31 @@ const PatientDashboard: React.FC = () => {
       </div>
 
       {/* Health Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-        <HealthCard title="BP Levels" color="red" />
-        <HealthCard title="Sugar Levels" color="blue" />
-        <HealthCard title="Heart Rate" color="green" />
-        <HealthCard title="Cholesterol" color="yellow" />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-6">
+        <HealthCard
+          title="HbA1c"
+          color="red"
+          metrics={healthMetrics}
+          metricKey="hbA1c"
+        />
+        <HealthCard
+          title="Fasting Glucose"
+          color="blue"
+          metrics={healthMetrics}
+          metricKey="fastingGlucose"
+        />
+        <HealthCard
+          title="Total Cholesterol"
+          color="green"
+          metrics={healthMetrics}
+          metricKey="totalCholesterol"
+        />
+        <HealthCard
+          title="Urine Albumin-to-Creatinine Ratio"
+          color="yellow"
+          metrics={healthMetrics}
+          metricKey="uAlbCreatinineRatio"
+        />
       </div>
 
       {/* Form Modal */}
