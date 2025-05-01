@@ -452,7 +452,7 @@ const SMSPage: React.FC<SMSPageProps> = () => {
               {/* Treatments Dropdown */}
               <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
-                  <InputLabel id="treatments-label">Treatments</InputLabel>
+                  <InputLabel id="treatments-label">Treatment</InputLabel>
                   <Select
                     labelId="treatments-label"
                     multiple
