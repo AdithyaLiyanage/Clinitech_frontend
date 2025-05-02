@@ -37,6 +37,15 @@ const demoTheme = createTheme({
   cssVariables: { colorSchemeSelector: "data-toolpad-color-scheme" },
   palette: { mode: 'light' },
   breakpoints: { values: { xs: 0, sm: 600, md: 600, lg: 1200, xl: 1536 } },
+  components: {
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: '#82A2D3',
+        },
+      },
+    },
+  },
 });
 
 function CustomAppTitle() {
