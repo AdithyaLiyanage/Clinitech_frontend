@@ -25,7 +25,7 @@ const DoctorDashboard: React.FC = () => {
     try {
       const token = localStorage.getItem("token"); // Retrieve token from localStorage
 
-      const response = await axios.get(`/api/patients/patients`, {
+      const response = await axios.get<any[]>(`/api/patients/patients`, {
         headers: {
           Authorization: `Bearer ${token}`, // Include token in request
         },
@@ -53,7 +53,7 @@ const DoctorDashboard: React.FC = () => {
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800">
             Hello,{" "}
-            <span className="text-purple-600">
+            <span className="text-blue-600">
               Dr. {user?.fullName || "User"}!
             </span>{" "}
             <span className="block sm:inline text-gray-800">
@@ -71,15 +71,15 @@ const DoctorDashboard: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-          <div className="bg-gradient-to-r from-purple-600 to-purple-500 text-white p-6 rounded-lg shadow-md flex flex-col justify-between">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-6 rounded-lg shadow-md flex flex-col justify-between">
             <h2 className="text-lg font-semibold">Visits for Today</h2>
             <p className="text-5xl font-bold mt-2">12</p>
           </div>
-          <div className="bg-gradient-to-r from-green-500 to-green-400 text-white p-6 rounded-lg shadow-md flex flex-col justify-between">
+          <div className="bg-gradient-to-r from-teal-600 to-teal-500 text-white p-6 rounded-lg shadow-md flex flex-col justify-between">
             <h2 className="text-lg font-semibold">New Patients</h2>
             <p className="text-5xl font-bold mt-2">4</p>
           </div>
-          <div className="bg-gradient-to-r from-red-500 to-red-400 text-white p-6 rounded-lg shadow-md flex flex-col justify-between">
+          <div className="bg-gradient-to-r from-indigo-600 to-indigo-500 text-white p-6 rounded-lg shadow-md flex flex-col justify-between">
             <h2 className="text-lg font-semibold">Old Patients</h2>
             <p className="text-5xl font-bold mt-2">8</p>
           </div>
@@ -97,7 +97,7 @@ const DoctorDashboard: React.FC = () => {
                   placeholder="Search patients..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full border border-gray-300 rounded-full py-2 px-4 pl-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full border border-gray-300 rounded-full py-2 px-4 pl-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
             </div>
@@ -143,7 +143,7 @@ const DoctorDashboard: React.FC = () => {
                       </td>
                       <td className="py-3 px-4 text-right">
                         <button
-                          className="bg-purple-600 text-white py-2 px-3 rounded-md hover:bg-purple-700 flex items-center gap-1 ml-auto"
+                          className="bg-blue-600 text-white py-2 px-3 rounded-md hover:bg-blue-700 flex items-center gap-1 ml-auto"
                           onClick={() => navigate(`/patients/${patient._id}`)}
                         >
                           <FaFilePen className="text-sm" /> View Dashboard

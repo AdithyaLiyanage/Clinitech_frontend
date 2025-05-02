@@ -215,94 +215,153 @@ const PatientDashboard: React.FC = () => {
           alt={patient?.fullName}
           className="w-20 h-20 rounded-full object-cover"
         />
-        <div className="flex-1 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-          <InfoCard label="Patient Name" value={patient?.fullName} icon="👤" />
-          <InfoCard label="Gender" value={patient?.gender} icon="⚧" />
-          <InfoCard label="Patient Age" value={patient?.age} icon="🎂" />
-          <InfoCard label="Blood Type" value={patient?.bloodType} icon="🩸" />
-          <div className="flex items-center justify-center">
-            <button
-              className="flex items-center gap-2 bg-blue-600 text-white p-3 rounded-lg shadow-lg hover:bg-blue-700"
-              onClick={handleAddNew}
-            >
-              <FaPlus size={15} />
-              <span>Add Medical Data</span>
-            </button>
-          </div>
-        </div>
+<div className="flex-1 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+  <InfoCard label="Patient Name" value={patient?.fullName} icon="👤" />
+  <InfoCard label="Gender" value={patient?.gender} icon="⚧" />
+  <InfoCard label="Patient Age" value={patient?.age} icon="🎂" />
+  <InfoCard label="Blood Type" value={patient?.bloodType} icon="🩸" />
+
+  {/* Button Section */}
+  <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-start sm:col-span-2 lg:col-span-1">
+    <button
+      className="flex items-center gap-2 bg-gradient-to-br from-blue-500 to-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-gradient-to-br hover:from-blue-600 hover:to-indigo-700 w-full sm:w-auto"
+      onClick={handleAddNew}
+    >
+      <FaPlus size={15} />
+      <span>Add Medical Data</span>
+    </button>
+  </div>
+</div>
+
       </div>
 
       {/* Health Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-6">
-        <HealthCard
-          title="HbA1c"
-          color="red"
-          metrics={healthMetrics}
-          metricKey="hbA1c"
-        />
-        <HealthCard
-          title="Fasting Glucose"
-          color="blue"
-          metrics={healthMetrics}
-          metricKey="fastingGlucose"
-        />
-        <HealthCard
-          title="Total Cholesterol"
-          color="green"
-          metrics={healthMetrics}
-          metricKey="totalCholesterol"
-        />
-        <HealthCard
-          title="Urine Albumin-to-Creatinine Ratio"
-          color="yellow"
-          metrics={healthMetrics}
-          metricKey="uAlbCreatinineRatio"
-        />
-      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mt-6">
+        {/* Left Column: 2x2 Grid of Health Charts */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 col-span-2 lg:col-span-4">
+          <HealthCard
+            title="HbA1c"
+            color="Black"
+            metrics={healthMetrics}
+            metricKey="hbA1c"
+          />
+          <HealthCard
+            title="Fasting Glucose"
+            color="Black"
+            metrics={healthMetrics}
+            metricKey="fastingGlucose"
+          />
+          <HealthCard
+            title="Total Cholesterol"
+            color="Black"
+            metrics={healthMetrics}
+            metricKey="totalCholesterol"
+          />
+          <HealthCard
+            title="Urine Albumin-to-Creatinine Ratio"
+            color="Black"
+            metrics={healthMetrics}
+            metricKey="uAlbCreatinineRatio"
+          />
+        </div>
 
-      {/* Form Modal */}
-      {showForm && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-[500px]">
-            <h2 className="text-lg font-semibold mb-4 text-center">
-              {isEditing ? "Edit Health Metrics" : "Add Health Metrics"}
-            </h2>
-            <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
-              {Object.keys(formData).map((key) => (
-                <div key={key}>
-                  <label className="block text-sm font-medium">{key}</label>
-                  <input
-                    type="number"
-                    name={key}
-                    value={formData[key]}
-                    onChange={handleInputChange}
-                    className="w-full p-2 border rounded-md"
-                    required
-                    min="0"
-                    step="0.01"
-                  />
-                </div>
-              ))}
-              <div className="col-span-2 flex justify-end gap-2 mt-4">
-                <button
-                  type="button"
-                  onClick={() => setShowForm(false)}
-                  className="bg-gray-500 text-white px-4 py-2 rounded"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-                >
-                  {isEditing ? "Update" : "Submit"}
-                </button>
-              </div>
-            </form>
+        {/* Right Column: Static Detail Card */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-blue-400 to-indigo-700 p-6 rounded-xl shadow-xl text-white transition-all duration-300 transform hover:scale-[1.02] hover:shadow-2xl">
+
+          {/* Title */}
+          <div className="flex items-center justify-center mb-4">
+            <h3 className="text-3xl font-bold text-center">
+              AI Powered Healthcare
+            </h3>
+          </div>
+
+          {/* Profile Image */}
+          <div className="flex justify-center mb-4">
+            <img
+              src="/src/assets/male-doctor.webp"
+              alt="Healthcare Professional"
+              className="w-32 h-32 rounded-full border-4 border-white"
+            />
+          </div>
+
+          {/* AI Assistant Title */}
+          <h3 className="text-xl font-semibold mb-4 text-center">
+            HealthConnect AI Assistant
+          </h3>
+          {/* Description */}
+          <div className="flex flex-col items-center mb-4 text-center text-sm">
+            <div className="flex items-center mb-2">
+              <i className="fas fa-stethoscope text-white mr-2"></i>
+              <span>Personalized health recommendations</span>
+            </div>
+            <div className="flex items-center">
+              <i className="fas fa-heartbeat text-white mr-2"></i>
+              <span>Real-time health monitoring insights</span>
+            </div>
+          </div>
+          {/* Get Started Button */}
+          <div className="flex justify-center">
+            {" "}
+            {/* Center the button */}
+            <button
+              className="flex items-center justify-center gap-2 bg-white text-blue-500 p-3 rounded-full shadow-lg hover:bg-blue-100 w-full sm:w-auto"
+              onClick={() => (window.location.href = `/model/${patientId}`)} // Link to AI model page
+              style={{
+                width: "300px",
+                fontSize: "16px",
+                fontWeight: "600",
+                letterSpacing: "1px",
+              }}
+            >
+              <span>Get Started</span>
+              <i className="fas fa-arrow-right"></i>
+            </button>
           </div>
         </div>
-      )}
 
+        {/* Form Modal */}
+        {showForm && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black/50">
+            <div className="bg-white p-6 rounded-lg shadow-lg w-[500px]">
+              <h2 className="text-lg font-semibold mb-4 text-center">
+                {isEditing ? "Edit Health Metrics" : "Add Health Metrics"}
+              </h2>
+              <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
+                {Object.keys(formData).map((key) => (
+                  <div key={key}>
+                    <label className="block text-sm font-medium">{key}</label>
+                    <input
+                      type="number"
+                      name={key}
+                      value={formData[key]}
+                      onChange={handleInputChange}
+                      className="w-full p-2 border rounded-md"
+                      required
+                      min="0"
+                      step="0.01"
+                    />
+                  </div>
+                ))}
+                <div className="col-span-2 flex justify-end gap-2 mt-4">
+                  <button
+                    type="button"
+                    onClick={() => setShowForm(false)}
+                    className="bg-gray-500 text-white px-4 py-2 rounded"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                  >
+                    {isEditing ? "Update" : "Submit"}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+      </div>
       {/* Health Metrics Table */}
       <div className="mt-6 bg-white p-4 rounded-lg shadow">
         <h2 className="text-lg font-semibold mb-4">Health Metrics History</h2>

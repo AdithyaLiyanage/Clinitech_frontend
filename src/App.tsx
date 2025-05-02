@@ -4,6 +4,7 @@ import DoctorLogin from "./components/DoctorLogin";
 import { AuthProvider } from "./context/AuthContext";
 import DoctorDashboard from "./pages/DoctorDashboard";
 import PatientDashboard from "./pages/PatientDashboard";
+import AiModel from "./pages/AiModel";
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: React.FC = () => {
             <Route path="/" element={<DoctorLogin />} />
             <Route path="/doctordashboard" element={<DoctorDashboard />}/>
             <Route path="/patients/:patientId" element={<PatientDashboard/>} />
+            <Route path="/model/:patientId" element={<AiModel/>} />
             
           </Routes>
         </AuthProvider>
