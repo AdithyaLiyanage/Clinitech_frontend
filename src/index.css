@@ -1,9 +1,31 @@
 :root {
-  --primary-color: #4a90e2;
-  --secondary-color: #50b7f5;
+  --primary-color: #1e88e5;
+  --primary-light: #bbdefb;
+  --primary-dark: #0d47a1;
+  --secondary-color: #64b5f6;
+  
+  /* Blue color palette */
+  --blue-50: #e3f2fd;
+  --blue-100: #bbdefb;
+  --blue-200: #90caf9;
+  --blue-300: #64b5f6;
+  --blue-400: #42a5f5;
+  --blue-500: #2196f3;
+  --blue-600: #1e88e5;
+  --blue-700: #1976d2;
+  --blue-800: #1565c0;
+  --blue-900: #0d47a1;
+  
+  /* Chart colors */
+  --chart-blue-1: #1976d2;
+  --chart-blue-2: #42a5f5;
+  --chart-blue-3: #90caf9;
+  --chart-blue-4: #bbdefb;
+  
+  /* Status colors - blue themed */
   --success-color: #4caf50;
-  --warning-color: #ff9800;
-  --danger-color: #f44336;
+  --warning-color: #1976d2;
+  --danger-color: #0d47a1;
   --light-color: #f8f9fa;
   --dark-color: #343a40;
   --text-color: #333;

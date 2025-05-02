@@ -67,7 +67,8 @@
 }
 
 .drug-table th {
-  background-color: #b3c7dc;
+  background-color: var(--blue-500);
+  color: white;
   padding: 12px 15px;
   text-align: left;
   font-weight: 600;
@@ -84,11 +85,11 @@
 }
 
 .drug-table tr.expired {
-  background-color: #4c62bd;
+  background-color: var(--blue-100);
 }
 
 .drug-table tr.expiring-soon {
-  background-color: #4660d4;
+  background-color: var(--blue-50);
 }
 
 .expiry-date {
@@ -113,13 +114,13 @@
 }
 
 .expired-tag {
-  background-color: #ffcdd2;
-  color: #c62828;
+  background-color: var(--blue-200);
+  color: var(--blue-900);
 }
 
 .expiring-tag {
-  background-color: #636ece;
-  color: #ff8f00;
+  background-color: var(--blue-100);
+  color: var(--blue-800);
 }
 
 .btn-sm {
@@ -202,12 +203,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f8d7da;
-  color: #721c24;
+  background-color: var(--blue-100);
+  color: var(--blue-900);
   padding: 15px;
   border-radius: 4px;
   margin-bottom: 20px;
-  border: 1px solid #f5c6cb;
+  border: 1px solid var(--blue-200);
 }
 
 .retry-button {
@@ -234,6 +235,6 @@
 /* Topic row styling for drug stock table */
 .drug-stock-table .topic-row,
 .drug-stock-page .topic-row {
-  background-color: #518ca8; /* Light blue background */
-  border-bottom: 2px solid #1890ff; /* Accent border */
+  background-color: var(--blue-400); /* Light blue background */
+  border-bottom: 2px solid var(--blue-600); /* Accent border */
 }

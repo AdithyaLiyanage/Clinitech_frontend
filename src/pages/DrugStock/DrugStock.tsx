@@ -9,7 +9,8 @@ import { drugApi } from '../../services/api';
 import { Drug, ChartData } from '../../types';
 import './DrugStock.css';
 
-const COLORS = ['#4caf50', '#ff9800', '#f44336'];
+// Removed unused COLORS constant
+const PIE_CHART_COLORS = ['#1976d2', '#42a5f5', '#90caf9', '#bbdefb', '#1565c0', '#0d47a1'];
 const STATUS_COLORS = {
   'Available': '#4caf50',
   'Low Stock': '#ff9800',
@@ -215,7 +216,7 @@ const DrugStock = () => {
                 
                 <div className="chart-card">
                   <h2>Status Distribution</h2>
-                  <div className="chart">
+                  <div className="chart status-distribution-chart">
                     <ResponsiveContainer width="100%" height={300}>
                       <PieChart>
                         <Pie
@@ -231,7 +232,7 @@ const DrugStock = () => {
                           }
                         >
                           {pieChartData.map((_, index) => (
-                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            <Cell key={`cell-${index}`} fill={PIE_CHART_COLORS[index % PIE_CHART_COLORS.length]} />
                           ))}
                         </Pie>
                         <Tooltip />
