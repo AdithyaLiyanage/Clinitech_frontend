@@ -34,7 +34,7 @@ import {
   checkoutPatient,
   getPatientBill,
   getSMSMessages,
-} from "../services/api";
+} from "./services/api";
 
 interface Bill {
   isCheckedOut: boolean;

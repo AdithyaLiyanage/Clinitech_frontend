@@ -30,7 +30,7 @@ import {
   getTreatments,
   getPatientBill,
   createSMSRecord,
-} from '../services/api';
+} from './services/api';
 
 interface ServiceOption {
   id: string;

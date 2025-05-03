@@ -15,7 +15,7 @@ import Logo  from "../assets/logo.png";
 import React, { useState } from "react";
 import PatientPage from "./PatientPage";
 import SMSPage from "./billsSMSPage";
-import { getPatientById } from "../services/api";
+import { getPatientById } from "./services/api";
 import { PatientData } from "../types/patientData";
 
 const NAVIGATION = [
